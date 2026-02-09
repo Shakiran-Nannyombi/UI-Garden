@@ -20,6 +20,8 @@ When you plant your **Identity Seed** (Name, Vibe, and Color DNA), Gemini 3 inje
 - **The Transformation:** The B&W world glitches or fades into a high-fidelity theme.
 - **Dynamic Theming:** CSS variables are updated in real-time based on AI-generated tokens.
 
+![The Bloom](https://github.com/shakiran-nannyombi/ui-garden/blob/main/public/images/bloom.gif)
+
 ### Phase 3: The Sprout 
 Add your UI components to the garden. The AI acts as a **Game Master**, auditing your work and assigning rarity grades based on how well they fit your chosen "vibe."
 

@@ -19,7 +19,16 @@ export class GardenLifeForce {
       Hair Characteristic: ${config.hairType}
 
       1. Write a 'Bloom Narrative' welcoming them.
-      2. Describe a Ghibli-style avatar for them based on their hair type and vibe.
+      2. Describe a highly detailed Ghibli-style avatar for them based on their hair type and vibe. This description will be used for AI image generation, so be EXTREMELY DESCRIPTIVE. Include:
+         - Detailed physical appearance (face, eyes, hair style and color matching their hair type)
+         - Specific clothing and accessories that match their vibe (${config.vibe})
+         - Color palette integration (using ${config.colors.join(", ")})
+         - Pose and expression
+         - Background environment that reflects their design aesthetic
+         - Lighting and atmosphere (soft, neon, dramatic, etc.)
+         - Art style specifics (Studio Ghibli anime style, hand-drawn, watercolor textures, etc.)
+         - Any magical or technological elements that enhance their vibe
+         Make it vivid enough that an AI image generator can create a beautiful, cohesive character portrait.
       3. Provide a brief design analysis of why this palette fits their vibe.
       4. Summarize the designer's style identity in one 'Title' (e.g., 'The Ethereal Minimalist', 'Void Walker', 'Cyber-shaman').
       5. Create a 'Stat Block' with integers (0-100) for: UI_Power, Vibe_Consistency, and Creativity. Base these on how cohesive the palette is.
@@ -69,7 +78,7 @@ export class GardenLifeForce {
       // Fallback for offline/error states
       return {
         narrative: "The Void trembles as you arrive. Your colors bleed into the gray, demanding existence. Welcome, creator.",
-        avatarDescription: "A figure with flowing hair, wearing a designer's cloak that shifts colors like an oil slick on water.",
+        avatarDescription: "A mysterious figure with flowing, windswept hair that shifts between deep indigo and silver tones, standing in a three-quarter pose. They wear a designer's cloak made of layered, translucent fabric that shifts colors like an oil slick on water, displaying iridescent purples, blues, and golds. Their eyes glow with creative energy, one hand raised as if conducting invisible forces. The background features a minimalist void with geometric wireframe patterns emerging from darkness, transitioning to soft light. Studio Ghibli anime art style with hand-drawn linework, soft watercolor textures, and dramatic rim lighting. Floating UI elements and glowing design tokens orbit around them like fireflies, creating an atmosphere of digital magic and creative power.",
         designAnalysis: "A bold choice that disrupts the status quo.",
         styleTitle: "The Unknown Architect",
         stats: { uiPower: 75, vibeConsistency: 80, creativity: 85 },
@@ -131,10 +140,10 @@ export class GardenLifeForce {
       const response = await this.ai.models.generateContent({
         model: 'gemini-2.5-flash-image',
         contents: {
-            parts: [
-                { inlineData: { mimeType, data: base64Data } },
-                { text: `Edit this image: ${instruction}. Maintain the original style but apply the changes seamlessly.` }
-            ]
+          parts: [
+            { inlineData: { mimeType, data: base64Data } },
+            { text: `Edit this image: ${instruction}. Maintain the original style but apply the changes seamlessly.` }
+          ]
         }
       });
 
