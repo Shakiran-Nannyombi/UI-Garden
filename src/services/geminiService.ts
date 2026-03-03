@@ -6,7 +6,7 @@ export class GardenLifeForce {
   private ai: GoogleGenAI;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+    this.ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
   }
 
   // FEATURE: THINKING MODE (Complex Analysis)
@@ -41,7 +41,7 @@ export class GardenLifeForce {
     try {
       // Uses gemini-3-pro-preview with HIGH thinking budget for complex persona creation
       const response = await this.ai.models.generateContent({
-        model: "gemini-2.5-pro",
+        model: "gemini-3-pro",
         contents: prompt,
         config: {
           thinkingConfig: { thinkingBudget: 32768 },
@@ -138,7 +138,7 @@ export class GardenLifeForce {
 
     try {
       const response = await this.ai.models.generateContent({
-        model: 'gemini-2.0-flash-preview-image-generation',
+        model: 'gemini-2.0-flash',
         contents: [
           {
             role: 'user',

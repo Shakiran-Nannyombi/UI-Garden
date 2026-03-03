@@ -265,8 +265,13 @@ const App: React.FC = () => {
         style={{ borderColor: 'var(--border-tint)', backgroundColor: 'rgba(0,0,0,0.4)' }}
       >
 
-        {/* PLAYER INFO & AVATAR UPLOAD */}
+        {/* LOGO & PLAYER INFO */}
         <div className="flex items-center gap-6">
+          {/* Main Logo */}
+          <div className="hidden lg:block mr-4">
+            <img src="/logo.png" alt="UI Garden Logo" className="w-12 h-12 drop-shadow-[0_0_15px_var(--primary)] animate-pulse" />
+          </div>
+
           <div className="relative group">
             {/* Avatar Container */}
             <div
@@ -424,8 +429,29 @@ const App: React.FC = () => {
                       <h3 className="text-xl font-black uppercase leading-none mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2 drop-shadow-md">
                         {product.name}
                       </h3>
-                      <div className="w-full h-1 bg-black/50 rounded-full overflow-hidden border border-white/5">
+                      <div className="w-full h-1 bg-black/50 rounded-full overflow-hidden border border-white/5 mb-4">
                         <div className="h-full bg-[var(--secondary)] shadow-[0_0_10px_var(--secondary)]" style={{ width: `${product.vibeScore}%` }} />
+                      </div>
+
+                      {/* Card Actions (Visible on Hover) */}
+                      <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setInspectedProduct(product); }}
+                          className="flex-1 py-2 bg-white/10 hover:bg-[var(--primary)] hover:text-black text-[8px] font-black uppercase tracking-widest rounded border border-white/10 transition-colors"
+                        >
+                          Diagnostic
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigator.clipboard.writeText(JSON.stringify(product, null, 2));
+                            alert(`${product.name} data harvested to clipboard!`);
+                          }}
+                          className="px-3 py-2 bg-white/10 hover:bg-[var(--accent)] hover:text-black text-[8px] font-black rounded border border-white/10 transition-colors"
+                          title="Harvest Single Asset"
+                        >
+                          <Database size={10} />
+                        </button>
                       </div>
                     </div>
 
@@ -495,8 +521,11 @@ const App: React.FC = () => {
               style={{ borderColor: 'var(--border-tint)' }}
             >
               <div className="mb-1 text-[var(--text-dim)] group-hover:text-[var(--primary)] transition-colors"><FileJson size={24} /></div>
-              <span className="text-[8px] uppercase tracking-wider opacity-60" style={{ color: 'var(--text-dim)' }}>Harvest</span>
+              <span className="text-[8px] uppercase tracking-wider opacity-60" style={{ color: 'var(--text-dim)' }}>Execute Harvest</span>
             </button>
+          </div>
+          <div className="mt-2 text-[7px] uppercase tracking-[0.2em] font-mono text-center opacity-30">
+            * Harvest captures all sector data for future propagation
           </div>
         </div>
       </footer>

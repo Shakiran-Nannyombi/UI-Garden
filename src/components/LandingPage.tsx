@@ -20,18 +20,18 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
             <span className="px-4 text-[10px] uppercase tracking-[0.5em] text-zinc-500 font-bold">Protocol 001: Genesis</span>
             <div className="w-12 h-1 border-b border-white/20" />
           </div>
-          
+
           <h1 className="text-7xl md:text-9xl font-black tracking-tighter uppercase leading-none font-['Archivo_Black']">
             UI GARDEN
           </h1>
-          
+
           <p className="text-zinc-400 text-lg md:text-xl font-light max-w-lg mx-auto leading-relaxed tracking-wide">
             You are the Architect. The Void is silent, colorless, and waiting for your aesthetic frequency.
           </p>
         </div>
 
         <div className="pt-8">
-          <button 
+          <button
             onClick={onStart}
             className="group relative inline-flex items-center justify-center px-10 py-5 font-black tracking-widest uppercase text-xs text-black transition-all duration-300 ease-in-out bg-white rounded-full hover:bg-zinc-200 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
           >
