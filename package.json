@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "remotion:studio": "remotion studio remotion/index.ts",
-    "remotion:render": "remotion render remotion/index.ts UIGardenDemo out/video.mp4"
+    "remotion:render": "remotion render remotion/index.ts UIGardenDemo out/video.mp4",
+    "test": "node --test __tests__/"
   },
   "dependencies": {
     "@google/genai": "^1.40.0",
