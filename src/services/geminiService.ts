@@ -41,7 +41,7 @@ export class GardenLifeForce {
     try {
       // Uses gemini-3-pro-preview with HIGH thinking budget for complex persona creation
       const response = await this.ai.models.generateContent({
-        model: "gemini-3-pro-preview",
+        model: "gemini-2.5-pro",
         contents: prompt,
         config: {
           thinkingConfig: { thinkingBudget: 32768 },
@@ -102,7 +102,7 @@ export class GardenLifeForce {
 
     try {
       const response = await this.ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-2.0-flash",
         contents: prompt,
         config: {
           responseMimeType: "application/json",
@@ -138,12 +138,18 @@ export class GardenLifeForce {
 
     try {
       const response = await this.ai.models.generateContent({
-        model: 'gemini-2.5-flash-image',
-        contents: {
-          parts: [
-            { inlineData: { mimeType, data: base64Data } },
-            { text: `Edit this image: ${instruction}. Maintain the original style but apply the changes seamlessly.` }
-          ]
+        model: 'gemini-2.0-flash-preview-image-generation',
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              { inlineData: { mimeType, data: base64Data } },
+              { text: `Edit this image: ${instruction}. Maintain the original style but apply the changes seamlessly.` }
+            ]
+          }
+        ],
+        config: {
+          responseModalities: ['IMAGE', 'TEXT'],
         }
       });
 
