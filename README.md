@@ -8,6 +8,8 @@
 
 **UI Garden** is a gamified design playground where your aesthetic identity isn't just a setting—it's a seed that grows into a living, breathing digital ecosystem. This project explores the boundary between human intent and machine creativity, powered by the **Gemini 3 Pro** engine.
 
+### 🌐 [Live Demo (Vercel)](https://ui-garden-orcin.vercel.app/)
+
 ---
 
 ## The AI Engine: Beyond Code
